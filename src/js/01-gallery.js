@@ -1,3 +1,8 @@
+// Описаний в документації
+import SimpleLightbox from 'simplelightbox';
+// Додатковий імпорт стилів
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import { galleryItems } from './gallery-items.js';
 
 const galleryContainer = document.querySelector('.gallery');
@@ -18,17 +23,6 @@ function createGalleryMarkup() {
 
 galleryContainer.innerHTML = createGalleryMarkup();
 
-const galleryImages = galleryContainer.querySelectorAll('.gallery__image');
-
-galleryImages.forEach((image, index) => {
-  image.addEventListener('click', event => {
-    event.preventDefault();
-
-    const lightbox = basicLightbox.create(`
-      <img src="${galleryItems[index].original}" alt="${galleryItems[index].description}" />
-    `);
-    lightbox.show();
-  });
-});
+const lightbox = new SimpleLightbox('.gallery a', {});
 
 console.log(galleryItems);
